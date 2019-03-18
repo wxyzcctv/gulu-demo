@@ -21,7 +21,7 @@ export default {
         vertical-align: middle;
         > .g-button{
             border-radius: 0;
-            &:not(first-child){
+            &:not(:first-child){
                 margin-left: -1px;
             }
             &:first-child{
@@ -32,11 +32,12 @@ export default {
                 border-top-right-radius: var(--border-radius);
                 border-bottom-right-radius:var(--border-radius);
             }
+            &:hover{
+                position: relative;
+                z-index:1;
+            }
         }
-        &:hover{
-            position: relative;
-            z-index:1;
-        }
+
     }
 
 </style>

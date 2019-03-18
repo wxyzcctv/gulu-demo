@@ -56,7 +56,7 @@
 .g-button-group > .g-button {
   border-radius: 0;
 }
-.g-button-group > .g-button:not(first-child) {
+.g-button-group > .g-button:not(:first-child) {
   margin-left: -1px;
 }
 .g-button-group > .g-button:first-child {
@@ -67,7 +67,7 @@
   border-top-right-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
 }
-.g-button-group:hover {
+.g-button-group > .g-button:hover {
   position: relative;
   z-index: 1;
 }
