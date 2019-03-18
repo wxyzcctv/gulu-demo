@@ -12573,7 +12573,38 @@ exports.default = void 0;
 //
 //
 //
-var _default = {};
+var _default = {
+  mounted: function mounted() {
+    //当这个组件出现在页面上的时候就会触发的一个函数
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = this.$el.children[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        var node = _step.value;
+        var name = node.nodeName.toLowerCase();
+
+        if (name !== 'button') {
+          console.warn("g-button-group \u7684\u5B50\u5143\u7D20\u5E94\u8BE5\u662F g-button\uFF0C\u800C\u4F60\u5199\u7684\u662F".concat(name));
+        }
+      }
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator.return != null) {
+          _iterator.return();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+  }
+};
 exports.default = _default;
         var $9d84e7 = exports.default || module.exports;
       
