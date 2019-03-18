@@ -12404,7 +12404,18 @@ exports.default = void 0;
 //
 //
 var _default = {
-  props: ["icon", "iconPosition"]
+  // props: ["icon", "iconPosition"]
+  props: {
+    icon: {},
+    iconPosition: {
+      type: String,
+      default: 'left',
+      validator: function validator(value) {
+        return !(value !== 'left' && value !== 'right');
+      } // 此处是为了验证iconposition只有left和right
+
+    }
+  }
 };
 exports.default = _default;
         var $c8a2ba = exports.default || module.exports;
