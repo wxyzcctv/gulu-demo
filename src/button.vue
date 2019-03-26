@@ -9,8 +9,13 @@
   </button>
 </template>
 <script>
+import Icon from './icon'
 export default {
   // props: ["icon", "iconPosition"]
+  components:{
+    'g-icon':Icon
+  },
+  // 这里是进行局部定义
   props:{
     icon:{},
     loading:{
@@ -58,7 +63,7 @@ export default {
     order: 1;margin-right: .1em;
   }
   >.content{
-    order: 2;
+    order: 2; 
   }
   &.icon-right {
     > .icon {
