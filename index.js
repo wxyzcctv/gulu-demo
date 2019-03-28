@@ -1,4 +1,4 @@
-import Button from './src/buuton'
+import Button from './src/button'
 import ButtonGroup from './src/button-group'
 import Icon from './src/icon'
 
