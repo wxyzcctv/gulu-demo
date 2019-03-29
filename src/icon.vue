@@ -4,13 +4,14 @@
   </svg>
 </template>
 <script>
-export default {
-  props: ["name"]
-};
+  import "./svg"
+  export default {
+    props: ["name"]
+  };
 </script>
 <style lang="scss">
-    .g-icon {
-    height: 1em;
-    width: 1em;
-    }
+.g-icon {
+  height: 1em;
+  width: 1em;
+}
 </style>
