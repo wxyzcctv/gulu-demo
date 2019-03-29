@@ -10,13 +10,14 @@
 
 1. 安装
     使用本框架前，请在CSS中开启border-box
-    、、、
+    ```
     *,*::before,*::after{box-sixing:border-box}
-    、、、
+    ```
+
     IE 8 及以上浏览器都支持此样式
 
     你还需要设置默认样式（后续会改为SCSS变量）
-    、、、
+    ```
     :root {
         --button-height: 32px;
         --font-size: 14px;
@@ -27,15 +28,14 @@
         --border-color: #999;
         --border-color-hover: #666;
     }
-    、、、
-
+    ```
     IE 15及以上浏览器支持此样式
 2. 安装wxyz-test-1-0
-    、、、
+    ```
     npm i --save wxyz-test-1-0
-    、、、
+    ```
 3. 引入 wxyz-test-1-0
-    、、、
+    ```
     import { Button, ButtonGroup, Icon } from "wxyz-test-1-0";
     import 'wxyz-test-1-0/dist/index.css'
 
@@ -46,11 +46,7 @@
             "g-icon": Icon
         }
     }
-    、、、
-4. 引入svg symbols
-    、、、
-    <script src="//at.alicdn.com/t/font_1094098_th4asnvoqj.js"></script>
-    、、、
+    ```
 
 
 ## 文档
