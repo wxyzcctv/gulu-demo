@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+    name: 'GuLuButtonGroup',
     mounted(){//当这个组件出现在页面上的时候就会触发的一个函数
         for(let node of this.$el.children){
             let name = node.nodeName.toLowerCase()
@@ -15,7 +16,7 @@ export default {
     }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
     .g-button-group{
         display: inline-flex;
         vertical-align: middle;

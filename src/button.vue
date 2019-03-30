@@ -11,6 +11,7 @@
 <script>
 import Icon from './icon'
 export default {
+  name: 'GuLuButton',
   // props: ["icon", "iconPosition"]
   components:{
     'g-icon':Icon
@@ -33,7 +34,7 @@ export default {
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .g-button {
   @keyframes spain {
     0%{transform: rotate(0deg)}
