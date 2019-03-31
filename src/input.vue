@@ -1,7 +1,12 @@
 <template>
   <div class="wrapper" :class="{error}">
       <!-- 这里绑定class的是一个数组的形式，class是可以是一个数组的 -->
-    <input v-bind:value="value" :disabled="disabled" :readonly="readonly" type="text">
+    <input v-bind:value="value" :disabled="disabled" :readonly="readonly" type="text"
+        @change="$emit('change',$event)"
+        @input="$emit('input',$event)"
+        @focus="$emit('focus',$event)"
+        @blur="$emit('blur',$event)"
+    >
     <template v-if="error">
         <!-- 因为icon和span都需要判定是否有error，所以在其中加入template -->
         <icon name="error" class="icon-error"></icon>
