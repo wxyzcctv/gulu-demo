@@ -31,7 +31,8 @@
         body {
             font-size: var(--font-size);
         }
-        .box{
+
+        .box {
             margin: 20px;
         }
     </style>
@@ -55,6 +56,11 @@
         </div>
         <div class="box">
             <g-input value="五" error="名字不能少于两个字"></g-input>
+        </div>
+        <div class="box">
+            <g-input v-model="message"></g-input>
+            <p>{{message}}</p>
+            <button @click="message+=1">+1</button>
         </div>
         <div class="box" style="margin:20px;">
             <g-button :loading="loading1" @click="loading1 = !loading1">

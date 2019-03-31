@@ -2,10 +2,10 @@
   <div class="wrapper" :class="{error}">
       <!-- 这里绑定class的是一个数组的形式，class是可以是一个数组的 -->
     <input v-bind:value="value" :disabled="disabled" :readonly="readonly" type="text"
-        @change="$emit('change',$event)"
-        @input="$emit('input',$event)"
-        @focus="$emit('focus',$event)"
-        @blur="$emit('blur',$event)"
+        @change="$emit('change',$event.target.value)"
+        @input="$emit('input',$event.target.value)"
+        @focus="$emit('focus',$event.target.value)"
+        @blur="$emit('blur',$event.target.value)"
     >
     <template v-if="error">
         <!-- 因为icon和span都需要判定是否有error，所以在其中加入template -->
@@ -33,7 +33,7 @@ export default {
     },
     error: {
       type: String
-    }
+    },
   }
 };
 </script>

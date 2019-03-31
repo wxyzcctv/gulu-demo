@@ -67,14 +67,23 @@ describe('Input', () => {
                 vm.$on(eventName, callback)
                 //触发input的change事件
                 let event = new Event(eventName);
+                Object.defineProperty(event, 'target', {
+                    value: { value: 'hi' }, enumberable: true
+                })
+                // 为了实现双向绑定，在这里将前面的input的属性$event改为了
+                // $event.target.value，所以在模拟的时候需要设置一个target属性值
+                // 这里就进行以上设置，设置target的值是value：'hi'，
+                // 那么返回的$event.target.value就是hi
                 let inputElement = vm.$el.querySelector('input')
                 inputElement.dispatchEvent(event)
                 // dispatchEvent就是触发事件了吧
-                // expect(callback).to.have.been.calledWith(event)
-                expect(callback).to.have.been.called
+                
+                expect(callback).to.have.been.calledWith('hi')
+                // expect(callback).to.have.been.called
                 // callback是事件传回来的，不是自己触发的事件的回调，
                 // 这个时候期待的是函数被触发了，并且通过calledWith返回了event事件。
             })
         })
     })
 })
+
