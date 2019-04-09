@@ -14,6 +14,11 @@
     });
     return valid;
   }
+  // 输入的phon数组对象的时候，当其key不是offset或者span的时候就会返回false
+  // 也就没有办法进行下面的操作，以上内容是一个算法，这个算法进行了两次循环，
+  // 第一个循环是将得到的数组对象所有的key取出，
+  // 第二个循环是判断所有的key中是否包含了指定的内容,如果不是指定的内容,
+  // 那么就返回一个错误
 export default {
   name: "GuluCol",
   props: {
@@ -23,11 +28,6 @@ export default {
     offset: {
       type: [Number, String]
     },
-    // 输入的phon数组对象的时候，当其key不是offset或者span的时候就会返回false
-    // 也就没有办法进行下面的操作，以上内容是一个算法，这个算法进行了两次循环，
-    // 第一个循环是将得到的数组对象所有的key取出，
-    // 第二个循环是判断所有的key中是否包含了指定的内容,如果不是指定的内容,
-    // 那么就返回一个错误
     ipad: {
       type: Object,
       validator,
@@ -86,7 +86,7 @@ export default {
       margin-left: ($n / 24) * 100%;
     }
   }
-  @media (min-width: 577px) and (max-width: 768px) {
+  @media (min-width: 577px){
     $class-prefix: col-ipad-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -100,7 +100,7 @@ export default {
       }
     }
   }
-  @media (min-width: 769px) and (max-width: 992px) {
+  @media (min-width: 769px){
     $class-prefix: col-narrow-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
@@ -114,7 +114,7 @@ export default {
       }
     }
   }
-  @media (min-width: 993px) and (max-width: 1200px) {
+  @media (min-width: 993px){
     $class-prefix: col-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {

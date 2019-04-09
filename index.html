@@ -42,12 +42,20 @@
             width: 1em;
         }
     </style>
+
 </head>
 
 <body>
+    <style>
+        .demo {
+            background: #ddd;
+            border: 1px solid #666;
+            height: 30px;
+        }
+    </style>
     <div id="app">
         <div style="border:1px solid">
-            <g-row>
+            <!-- <g-row>
                 <g-col span='4'  :phone='{span:12}'>1</g-col>
                 <g-col span='20' :phone='{span:12,offset:0}'>11</g-col>
             </g-row>
@@ -66,7 +74,7 @@
                 :wide-pc='{span:23}'
                 style="border:1px solid red"
                 >22</g-col>
-            </g-row>
+            </g-row> -->
             <!-- <g-row gutter='20'>
                 <g-col span='4'>2</g-col>
                 <g-col span='20'>22</g-col>
@@ -76,8 +84,27 @@
                 <g-col>2</g-col>
                 <g-col>3</g-col>
             </g-row> -->
+            <g-row>
+                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
+                    <div class="demo"></div>
+                </g-col>
+                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
+                    <div class="demo"></div>
+                </g-col>
+                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
+                    <div class="demo"></div>
+                </g-col>
+                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
+                    <div class="demo"></div>
+                </g-col>
+                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
+                    <div class="demo"></div>
+                </g-col>
+                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
+                    <div class="demo"></div>
+                </g-col>
+            </g-row>
         </div>
-
 
         <div class="box">
             <g-input value="小三" disabled></g-input>
