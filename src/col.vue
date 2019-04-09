@@ -23,10 +23,6 @@ export default {
     offset: {
       type: [Number, String]
     },
-    phone: {
-      type: Object,
-      validator,
-    },
     // 输入的phon数组对象的时候，当其key不是offset或者span的时候就会返回false
     // 也就没有办法进行下面的操作，以上内容是一个算法，这个算法进行了两次循环，
     // 第一个循环是将得到的数组对象所有的key取出，
@@ -56,16 +52,14 @@ export default {
     },
     computed: {
       colClass() {
-        let { span, offset, phone, ipad, narrowPc, pc, widePc} = this;
-        let phoneClass = [];
+        let { span, offset, ipad, narrowPc, pc, widePc} = this;
         return [
           span && `col-${span}`,
           offset && `offset-${offset}`,
-          ...[phone && `col-phone-${phone.span}`],
-          ...[ipad && `col-ipad-${ipad.span}`],
-          ...[narrowPc && `col-narrow-pc-${narrowPc.span}`],
-          ...[pc && `col-pc-${pc.span}`],
-          ...[widePc && `col-wide-pc-${widePc.span}`],
+          ...[ipad ? `col-ipad-${ipad.span}`:[]],
+          ...[narrowPc ? `col-narrow-pc-${narrowPc.span}`:[]],
+          ...[pc ? `col-pc-${pc.span}`:[]],
+          ...[widePc ? `col-wide-pc-${widePc.span}`:[]],
         ];
       },
       colStyle() {
@@ -90,20 +84,6 @@ export default {
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: ($n / 24) * 100%;
-    }
-  }
-  @media (max-width: 576px) {
-    $class-prefix: col-phone-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: ($n / 24) * 100%;
-      }
-    }
-    $class-prefix: offset-phone-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        margin-left: ($n / 24) * 100%;
-      }
     }
   }
   @media (min-width: 577px) and (max-width: 768px) {
