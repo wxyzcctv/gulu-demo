@@ -25,7 +25,7 @@
         }
 
         #app {
-            margin: 10px;
+            /* margin: 10px; */
         }
 
         body {
@@ -54,59 +54,16 @@
         }
     </style>
     <div id="app">
-        <div style="border:1px solid">
-            <!-- <g-row>
-                <g-col span='4'  :phone='{span:12}'>1</g-col>
-                <g-col span='20' :phone='{span:12,offset:0}'>11</g-col>
-            </g-row>
-            <g-row>
-                <g-col span='24' 
-                :ipad='{span:8}'
-                :narrow-pc='{span:4}'
-                :pc='{span:2}'
-                :wide-pc='{span:1}'
-                style="border:1px solid red"
-                >2</g-col>
-                <g-col span='24'
-                :ipad='{span:16}'
-                :narrow-pc='{span:20}'
-                :pc='{span:22}'
-                :wide-pc='{span:23}'
-                style="border:1px solid red"
-                >22</g-col>
-            </g-row> -->
-            <!-- <g-row gutter='20'>
-                <g-col span='4'>2</g-col>
-                <g-col span='20'>22</g-col>
-            </g-row>
-            <g-row gutter='20'>
-                <g-col>1</g-col>
-                <g-col>2</g-col>
-                <g-col>3</g-col>
-            </g-row> -->
-            <g-row>
-                <g-col span='24' offset='1' :narrow-pc='{span:12,offset:12}'>
-                    <div class="demo"></div>
-                </g-col>
-                <!-- <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
-                    <div class="demo"></div>
-                </g-col>
-                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
-                    <div class="demo"></div>
-                </g-col>
-                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
-                    <div class="demo"></div>
-                </g-col>
-                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
-                    <div class="demo"></div>
-                </g-col>
-                <g-col span='24' :ipad='{span:12}' :narrow-pc='{span:8}'>
-                    <div class="demo"></div>
-                </g-col> -->
-            </g-row>
-        </div>
+        <g-layout style="height:100vh">
+            <g-sider class="demo">sider</g-sider>
+            <g-layout>
+                <g-header class="demo">header</g-header>
+                <g-content class="demo">content</g-content>
+                <g-footer class="demo">footer</g-footer>
+            </g-layout>
+        </g-layout>
 
-        <div class="box">
+        <!-- <div class="box">
             <g-input value="小三" disabled></g-input>
             <g-input value="小四" readonly></g-input>
             <g-input value="小五"></g-input>
@@ -137,7 +94,7 @@
                 <g-button>更多</g-button>
                 <g-button icon='right' icon-position='right'>下一页</g-button>
             </g-button-group>
-        </div>
+        </div> -->
     </div>
     <script src="./src/app.js"></script>
 </body>
