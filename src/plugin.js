@@ -1,9 +1,11 @@
 import Toast from './toast'
-export default{
-    install(Vue, options){
-        Vue.prototype.$toast = function(message){
+export default {
+    install(Vue, options) {
+        Vue.prototype.$toast = function (message, taostOptions) {
             const Constructor = Vue.extend(Toast)
-            const toast = new Constructor()
+            const toast = new Constructor({
+                propsData:taostOptions
+            })
             // 以上两句是要死记硬背的
             toast.$slots.default = [message]
             toast.$mount()
@@ -12,5 +14,4 @@ export default{
             // 将创建的组件的元素添加到body里面
         }
     }
-
 }

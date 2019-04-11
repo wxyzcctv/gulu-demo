@@ -1,29 +1,105 @@
 <template>
-  <div class="toast">
-    <slot></slot>
+  <div class="toast" ref="wrapper">
+    <div class="message">
+        <slot v-if="!enableHTML"></slot>
+        <div v-else v-html="$slots.default[0]"></div>
+    </div>
+    <div class="line" ref="line"></div>
+    <span class="close" @click="clickClose">{{closeButton.text}}</span>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  name: "GuLuToast",
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    autoCloseDelay: {
+      type: Number,
+      default: 20
+    },
+    closeButton: {
+      type: Object,
+      default() {
+        return {
+          text: "关闭",
+          callback: undefined
+          // 传入的callback默认为undefined
+        };
+      }
+    },
+    enableHTML: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted() {
+    this.updataStyle()
+    this.exeAutoClose()
+  },
+  methods: {
+    updataStyle(){
+      this.$nextTick(() => {
+        this.$refs.line.style.height = 
+          `${this.$refs.wrapper.getBoundingClientRect().height}px`
+      })
+    },
+    exeAutoClose(){
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close();
+        }, this.autoCloseDelay * 1000);
+      }
+    },
+    close() {
+      this.$el.remove(), this.$destroy();
+    },
+    log() {
+      console.log("测试");
+    },
+    clickClose() {
+      this.close();
+      if (this.closeButton && typeof this.closeButton.callback === "function") {
+        // 这里判断是否有closeButton，以及closeButton的callback是否为函数
+        this.closeButton.callback(this);
+        // 此处的this表示toast实例
+      }
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
-$font-size:14px;
-$toast-height:40px;
-$toast-bg:rgba(0,0,0,0.75);
+$font-size: 14px;
+$toast-min-height: 40px;
+$toast-bg: rgba(0, 0, 0, 0.75);
 .toast {
-    font-size: $font-size;
-    height: $toast-height;
-    background: $toast-bg;
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    line-height: 1.8;
-    color: white;
-    display: flex;
-    align-items: center;
-    border-radius: 4px;
-    box-shadow: 0 0 3px 0 rgba(0,0,0,0.50);
-    padding: 0 16px;
+  font-size: $font-size;
+  min-height: $toast-min-height;
+  background: $toast-bg;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1.8;
+  color: white;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  padding: 0 16px;
+  .close {
+    padding-left: 16px;
+    flex-shrink: 0;
+  }
+  .line {
+    height: 100%;
+    border-left: 1px solid #666;
+    margin-left: 16px;
+  }
+  .message{
+    padding:8px 0;
+  }
 }
 </style>
