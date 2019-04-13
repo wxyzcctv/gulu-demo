@@ -68,7 +68,9 @@ export default {
       }
     },
     close() {
-      this.$el.remove(), this.$destroy();
+      this.$el.remove(), 
+      this.$emit('close'),
+      this.$destroy();
     },
     log() {
       console.log("测试");
