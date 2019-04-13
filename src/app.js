@@ -49,7 +49,7 @@ new Vue({
                             toast.log()
                     }
                 },
-                position: 'middle',
+                position: 'bottom',
             })
         }
     }
