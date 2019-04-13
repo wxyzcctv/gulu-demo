@@ -36,7 +36,8 @@ new Vue({
         message: 'hi',
     },
     created() {
-        this.$toast('message', {
+        this.$toast('有事起奏', {
+        autoClose:true,
         enableHTML:false,    
         closeButton: {
                 text: '朕知道了',
@@ -44,7 +45,8 @@ new Vue({
                     console.log('圣上说他知道了'),
                     toast.log()
                 }
-            }
+            },
+        position:'middle',
         })
     },
     methods: {
