@@ -36,22 +36,21 @@ new Vue({
         message: 'hi',
     },
     created() {
-        this.$toast('有事起奏', {
-        autoClose:true,
-        enableHTML:false,    
-        closeButton: {
-                text: '朕知道了',
-                callback: (toast) => {
-                    console.log('圣上说他知道了'),
-                    toast.log()
-                }
-            },
-        position:'middle',
-        })
     },
     methods: {
         showToast() {
-
+            this.$toast(`编号${parseInt(Math.random() * 100)}有事起奏`, {
+                autoClose: true,
+                enableHTML: false,
+                closeButton: {
+                    text: '朕知道了',
+                    callback: (toast) => {
+                        console.log('圣上说他知道了'),
+                            toast.log()
+                    }
+                },
+                position: 'middle',
+            })
         }
     }
 })
