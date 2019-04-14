@@ -38,7 +38,16 @@ new Vue({
     created() {
     },
     methods: {
-        showToast() {
+        showToast1(){
+            this.showToast('top')
+        },
+        showToast2(){
+            this.showToast('middle')
+        },
+        showToast3(){
+            this.showToast('bottom')
+        },
+        showToast(position) {
             this.$toast(`编号${parseInt(Math.random() * 100)}有事起奏`, {
                 autoClose: true,
                 enableHTML: false,
@@ -49,7 +58,7 @@ new Vue({
                             toast.log()
                     }
                 },
-                position: 'bottom',
+                position,
             })
         }
     }
