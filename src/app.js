@@ -49,7 +49,7 @@ new Vue({
         },
         showToast(position) {
             this.$toast(`编号${parseInt(Math.random() * 100)}有事起奏`, {
-                autoClose: true,
+                autoClose: 3,
                 enableHTML: false,
                 closeButton: {
                     text: '朕知道了',
