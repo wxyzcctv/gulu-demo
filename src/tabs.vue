@@ -31,7 +31,9 @@ export default {
             eventBus: this.eventBus
         }
     },
-    created(){
+    mounted(){
+        this.eventBus.$emit('update:selected',this.selected)
+        // 这里就是设置了默认的选项，默认的被触发了
     }
 }
 </script>
