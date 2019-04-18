@@ -23,12 +23,14 @@ export default {
 <style lang="scss" scoped>
 $tab-hight: 40px;
 $blue:blue;
+$border-color:#ddd;
 .tabs-head{
     display: flex;
     justify-content: start;
     align-items: center;
     height: $tab-hight;
     position: relative;
+    border-bottom: 1px solid $border-color;
     > .line{
         position: absolute;
         bottom: 0;
@@ -37,6 +39,10 @@ $blue:blue;
     }
     > .actions-wrapper{
         margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1em;
     }// 直接这样设置就可以实现元素右对齐，
     
 }
