@@ -13,8 +13,9 @@ export default {
     inject:['eventBus'],
     mounted(){
         this.eventBus.$on('update:selected',(item,vm)=>{
-            console.log(item)
-            console.log(vm)
+            let {width,height,top,left} = vm.$el.getBoundingClientRect()// 得到传入的元素长宽高等属性
+            this.$refs.line.style.width = `${width}px`
+            this.$refs.line.style.left = `${left}px`
         })
     }
 }
@@ -27,13 +28,12 @@ $blue:blue;
     justify-content: start;
     align-items: center;
     height: $tab-hight;
-    border: 1px solid red;
     position: relative;
     > .line{
         position: absolute;
         bottom: 0;
-        border-bottom: 2px solid $blue;
-        width: 100px;
+        border-bottom: 1px solid $blue;
+        transition: all 350ms;
     }
     > .actions-wrapper{
         margin-left: auto;

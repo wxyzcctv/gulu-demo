@@ -35,14 +35,12 @@ export default {
         this.$children.forEach((vm)=>{
             if(vm.$options.name === 'GuLuTabsHead'){
                 vm.$children.forEach((childvm)=>{
-                    console.log(childvm.$options.name)
                     if(childvm.$options.name === 'GuLuTabsItem' 
                     && childvm.name === this.selected){
                         this.eventBus.$emit('update:selected',this.selected,childvm)
                     }
                 })
             }
-
         })
         // 这里就是设置了默认的选项，默认的被触发了
     }
