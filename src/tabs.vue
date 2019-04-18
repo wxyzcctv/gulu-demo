@@ -5,6 +5,7 @@
     </div>
 </template>
 <script>
+import Vue from 'vue'
 export default {
     name: 'GuLuTabs',
     props:{
@@ -20,8 +21,17 @@ export default {
             }
         }
     },
+    data(){
+        return {
+            eventBus: new Vue()
+        }
+    },
+    provide(){
+        return {
+            eventBus: this.eventBus
+        }
+    },
     created(){
-
     }
 }
 </script>
