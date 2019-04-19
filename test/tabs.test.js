@@ -46,5 +46,8 @@ describe('Tabs', () => {
             done()
         })
     })
+    it('子组件接收direction属性',()=>{
+        
+    })
 })
 
