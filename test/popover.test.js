@@ -32,4 +32,29 @@ describe('position', () => {
             done()
         })
     })
+    xit('可以设置trigger.', (done) => {
+        Vue.component('g-popover',Popover)
+        const div = document.createElement('div')
+        document.body.appendChild(div)
+        div.innerHTML =
+        `
+        <g-popover trigger='hover' ref="a">
+            <template slot="content">
+                显示内容
+            </template>
+            <button>点击</button>
+        </g-popover>
+        `
+        const vm = new Vue({
+            el:div
+        })
+        let event = new Event('mouseenter')
+        vm.$el.dispatchEvent(event)
+        vm.$nextTick(()=>{
+            const {contentWrapper} = vm.$refs.a.$refs
+            expect(contentWrapper).to.exist
+            done()
+        })
+    })
+    
 })
