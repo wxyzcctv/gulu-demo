@@ -1,6 +1,7 @@
 <template>
   <div class="popover" @click="onClick" ref="popover">
-    <div  ref="contentWrapper" class="content-wrapper" v-if="visible"> 
+    <div  ref="contentWrapper" class="content-wrapper" v-if="visible" 
+    :class="{[`position-${position}`]:true}"> 
       <slot name="content"></slot> 
     </div>
     <span ref="triggerWrapper" style="display:inline-block">
@@ -11,15 +12,40 @@
 <script>
 export default {
   name: "GuLuPopover",
+  props:{
+    position:{
+      type:String,
+      default:'top',
+      validator (value){
+        return ['top','bottom','left','right'].indexOf(value) >=0
+      }
+    }
+  },
   data() {
     return { visible: false };
   },
   methods: {
     positionContent(){
-      document.body.appendChild(this.$refs.contentWrapper)
-      let {width,height,top,left} = this.$refs.triggerWrapper.getBoundingClientRect()
-      this.$refs.contentWrapper.style.left = left + window.scrollX + 'px'
-      this.$refs.contentWrapper.style.top = top + window.scrollY + 'px'
+      const{contentWrapper,triggerWrapper} = this.$refs
+      document.body.appendChild(contentWrapper)
+      const {height: height2} = contentWrapper.getBoundingClientRect()
+      const {width,height,top,left} = triggerWrapper.getBoundingClientRect()
+      let positions = {
+        top:{ left: left + window.scrollX, top: top + window.scrollY },
+        bottom:{ left: left + window.scrollX, top: top + height + window.scrollY },
+        left:{
+          left: left + window.scrollX,
+          top: top + window.scrollY + (height - height2) / 2
+        },
+        right:{
+          left: left + window.scrollX + width,
+          top: top + window.scrollY + (height - height2) / 2
+        }
+      }
+      contentWrapper.style.left =  positions[this.position].left + 'px'
+      contentWrapper.style.top =  positions[this.position].top + 'px'
+      // 以上代码表示的是设置contentWrapper的style，
+      // 其中向左移动的距离，由传入的position与positions列表对应值进行匹配。
     },
     onClickDocument(e){
       if( this.$refs.popover &&
@@ -67,8 +93,6 @@ $border-radius:4px;
   border: 1px solid $border-color;
   background: white;
   filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
-  transform: translateY(-100%);
-  margin-top: -10px;
   padding: .5em 1em;
   max-width: 20em;
   word-break: break-all;
@@ -79,15 +103,67 @@ $border-radius:4px;
     border: 10px solid transparent;
     width: 0;
     height: 0;
-    left: 10px;
   }
-  &::before{
-    border-top-color: black;
-    top: 100%;
+  &.position-top{
+    transform: translateY(-100%);
+    margin-top: -10px;
+    &::before,&::after{
+      left: 10px;
+    }
+    &::before{
+      border-top-color: #999;
+      top: 100%;
+    }
+    &::after{
+      border-top-color: white;
+      top: calc(100% - 1px);
+    }
   }
-  &::after{
-    border-top-color: white;
-    top: calc(100% - 1px);
+  &.position-bottom {
+    margin-top: 10px;
+    &::before,&::after{
+      left: 10px;
+    }
+    &::before{
+      border-bottom-color: #999;
+      bottom: 100%;
+    }
+    &::after{
+      border-bottom-color: white;
+      bottom: calc(100% - 1px);
+    }
   }
+  &.position-left {
+    transform: translateX(-100%);
+    margin-left: -10px;
+    &::before,&::after{
+      top: 50%;
+      transform: translateY(-50%)
+    }
+    &::before{
+      border-left-color: #999;
+      left: 100%;
+    }
+    &::after{
+      border-left-color: white;
+      left: calc(100% - 1px);
+    }
+  }
+  &.position-right {
+    margin-left: 10px;
+    &::before,&::after{
+      top: 50%;
+      transform: translateY(-50%)
+    }
+    &::before{
+      border-right-color: #999;
+      right: 100%;
+    }
+    &::after{
+      border-right-color: white;
+      right: calc(100% - 1px);
+    }
+  }
+
 }
 </style>
