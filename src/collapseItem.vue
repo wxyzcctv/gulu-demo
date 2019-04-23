@@ -1,7 +1,7 @@
 <template>
     <div class="collapseItem">
         <div class="title" @click="toggle">
-            {{single}}{{title}}
+            {{title}}
         </div>
         <div class="content" v-if="open">
             <slot></slot>
@@ -25,37 +25,28 @@ export default {
     data(){
         return{
             open: false,
-            single: false
         }
     },
     inject:['eventBus'],
     mounted(){
-        this.eventBus && this.eventBus.$on('update:selected',(name)=>{
-            if(name != this.name){
-                if(this.single){
-                    this.close()
-                }
+        this.eventBus && this.eventBus.$on('update:selected',(names)=>{
+            if(names.indexOf(this.name) >= 0 ){
+                this.open = true                
             }else{
-                this.show()
+                this.open = false
             }
-            // 监听传回的事件，看看传回的VM是否就是自己，如果不是，就关闭
+            // 监听传回的事件，看看传回的VM是否b包含自己，如果包含了，就显示，不包含就关闭。
         })
     },
     methods:{
         toggle(){
             if (this.open) {
-                this.open = false
+                this.eventBus && this.eventBus.$emit('update:removeselected',this.name)
             }else{
-                this.eventBus && this.eventBus.$emit('update:selected',this.name)
+                this.eventBus && this.eventBus.$emit('update:addselected',this.name)
             }
-        },
-        close(){
-            this.open = false
-        },
-        show(){
-            this.open = true
         }
-    },
+    }
 }
 </script>
 <style lang="scss" scoped>
