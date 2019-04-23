@@ -31,6 +31,10 @@ export default {
         this.eventBus.$on('update:selected',(name)=>{
             this.$emit('update:selected',name)
         })
+        this.$children.forEach((vm)=>{
+            console.log(vm)
+            vm.single = this.single
+        })
     }
 }
 </script>
