@@ -1,6 +1,6 @@
 <template>
     <div class="collapseItem">
-        <div class="title" @click="open = !open">
+        <div class="title" @click="toggle">
             {{title}}
         </div>
         <div class="content" v-if="open">
@@ -11,6 +11,7 @@
 <script>
 export default {
     name: "GuLuCollapseItem",
+    
     props:{
         title:{
             type: String,
@@ -21,7 +22,30 @@ export default {
         return{
             open: false
         }
-    }
+    },
+    inject:['eventBus'],
+    mounted(){
+        this.eventBus && this.eventBus.$on('updata:selected',(vm)=>{
+            if(vm != this){
+                this.close()
+            }
+            // 监听传回的事件，看看传回的VM是否就是自己，如果不是，就关闭
+        })
+    },
+    methods:{
+        toggle(){
+            if (this.open) {
+                this.open = false
+            }else{
+                this.open = true
+                this.eventBus && this.eventBus.$emit('updata:selected',this)
+            }
+        },
+        close(){
+            this.open = false
+        }
+    },
+
 }
 </script>
 <style lang="scss" scoped>
@@ -30,9 +54,7 @@ export default {
     .collapseItem{
         > .title{
             border: 1px solid $grey;
-            margin-top: -1px;
-            margin-left: -1px;
-            margin-right: -1px;
+            margin: -1px;
             min-height: 32px;
             display: flex;
             align-items: center;
