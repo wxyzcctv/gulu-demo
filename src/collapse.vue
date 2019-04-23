@@ -16,6 +16,9 @@ export default {
         single:{
             type:Boolean,
             default:false
+        },
+        selected:{
+            type:String
         }
     },
     provide(){
@@ -24,6 +27,9 @@ export default {
                 eventBus:this.eventBus
             }
         }
+    },
+    mounted(){
+        this.eventBus.$emit('updata:selected',this.selected)
     }
 }
 </script>

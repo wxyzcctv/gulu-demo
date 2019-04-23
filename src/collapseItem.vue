@@ -16,6 +16,10 @@ export default {
         title:{
             type: String,
             required: true
+        },
+        name:{
+            type:String,
+            required: true
         }
     },
     data(){
@@ -25,9 +29,11 @@ export default {
     },
     inject:['eventBus'],
     mounted(){
-        this.eventBus && this.eventBus.$on('updata:selected',(vm)=>{
-            if(vm != this){
+        this.eventBus && this.eventBus.$on('updata:selected',(name)=>{
+            if(name != this.name){
                 this.close()
+            }else{
+                this.show()
             }
             // 监听传回的事件，看看传回的VM是否就是自己，如果不是，就关闭
         })
@@ -37,15 +43,16 @@ export default {
             if (this.open) {
                 this.open = false
             }else{
-                this.open = true
-                this.eventBus && this.eventBus.$emit('updata:selected',this)
+                this.eventBus && this.eventBus.$emit('updata:selected',this.name)
             }
         },
         close(){
             this.open = false
+        },
+        show(){
+            this.open = true
         }
     },
-
 }
 </script>
 <style lang="scss" scoped>
