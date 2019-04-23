@@ -13,13 +13,13 @@ export default {
         }
     },
     props:{
-        singel:{
+        single:{
             type:Boolean,
             default:false
         }
     },
     provide(){
-        if(this.singel){
+        if(this.single){
             return{
                 eventBus:this.eventBus
             }
