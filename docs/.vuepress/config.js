@@ -1,4 +1,5 @@
 module.exports = {
+    base:'/gulu-demo/',
     title: '轮子UI',
     description: '一个好用的UI',
     themeConfig: {
@@ -18,7 +19,13 @@ module.exports = {
             {
                 title: '组件',
                 children:[
-                    '/components/Button'
+                    '/components/button',
+                    '/components/input',
+                    '/components/tabs',
+                    '/components/layout',
+                    '/components/popover',
+                    '/components/grid',
+                    '/components/toast',
                 ]
             }
             
