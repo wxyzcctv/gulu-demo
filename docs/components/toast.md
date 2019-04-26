@@ -1,4 +1,4 @@
 ---
-title:Toast
+title: Toast
 ---
 # Toast

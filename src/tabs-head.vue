@@ -1,7 +1,7 @@
 <template>
-    <div class="tabs-head">
+    <div class="tabs-head" ref="tabsHead">
         <slot></slot>
-        <div class="line" ref="line"></div>
+        <div class="tabs-line" ref="tabsLine"></div>
         <div class="actions-wrapper">
             <slot name="actions"></slot>
         </div>
@@ -13,10 +13,16 @@ export default {
     inject:['eventBus'],
     mounted(){
         this.eventBus.$on('update:selected',(item,vm)=>{
-            let {width,height,top,left} = vm.$el.getBoundingClientRect()// 得到传入的元素长宽高等属性
-            this.$refs.line.style.width = `${width}px`
-            this.$refs.line.style.left = `${left}px`
+            this.updateLinePosition(vm)
         })
+    },
+    methods: {
+        updateLinePosition(selectedVm){
+            let {width,left} = selectedVm.$el.getBoundingClientRect()// 得到传入的元素长宽高等属性
+            let {left: left2} = this.$refs.tabsHead.getBoundingClientRect()
+            this.$refs.tabsLine.style.width = `${width}px`
+            this.$refs.tabsLine.style.left = `${left - left2}px`
+        }
     }
 }
 </script>
@@ -31,7 +37,7 @@ $border-color:#ddd;
     height: $tab-hight;
     position: relative;
     border-bottom: 1px solid $border-color;
-    > .line{
+    > .tabs-line{
         position: absolute;
         bottom: 0;
         border-bottom: 1px solid $blue;
