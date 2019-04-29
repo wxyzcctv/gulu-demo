@@ -3,4 +3,7 @@ title: Button - 按钮
 ---
 # 按钮
 
-<button-demos></button-demos>
+使用方法
+<ClientOnly>
+    <button-demos></button-demos>
+</ClientOnly>
