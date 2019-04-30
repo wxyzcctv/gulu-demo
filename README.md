@@ -1,60 +1,33 @@
-# 轮子 - 一个Vue UI组件
+# 轮子UI文档
 
-[![Build Status](https://travis-ci.com/wxyzcctv/gulu-demo.svg?branch=master)](https://travis-ci.com/wxyzcctv/gulu-demo)
+[文档](https://wxyzcctv.github.io/gulu-demo/)
 
-## 介绍
+本 UI 框架是自己制作的第一个 UI 框架，是为了更好的学习 Vue 而制作的，做的比较简单，但是也提供了常用的组件，适合移动端和PC端使用，本 UI 是基于 Vue 2 实现的。
 
-这是我在学习Vue过程中做一个UI框架
+## 我学到了什么
+在学习的过程中，自己每完成一个功能都通过commit做了记录，主要学习到了很多东西。
 
-## 开始使用
+1. 单元测试、覆盖率、持续集成等工程概念；
+2. 重构、TDD/BDD、设计模式、单向数据流等技术概念；
+3. Vue的几乎所有功能，并且是深入理解这些功能。
 
-1. 安装
-    使用本框架前，请在CSS中开启border-box
+## 有哪些轮子
+
+* 按钮、输入框、网络、布局、Toast、Tabs、Popover、手风琴
+
+## 项目特点
+
+1. 使用Travis CI 进行持续集成；
+2. 有丰富的单元测试，项目完成时，期望测试覆盖率超过90%；
+3. 代码可读性高
+
+## 源码学习
+
+1. 安装依赖
     ```
-    *,*::before,*::after{box-sixing:border-box}
+    yarn install
     ```
-
-    IE 8 及以上浏览器都支持此样式
-
-    你还需要设置默认样式（后续会改为SCSS变量）
+2. 启动 dev server
     ```
-    :root {
-        --button-height: 32px;
-        --font-size: 14px;
-        --button-bg: white;
-        --button-active-bg: #eee;
-        --border-radius: 4px;
-        --color: #333;
-        --border-color: #999;
-        --border-color-hover: #666;
-    }
+    yarn serve
     ```
-    IE 15及以上浏览器支持此样式
-2. 安装wxyz-test-1-0
-    ```
-    npm i --save wxyz-test-1-0
-    ```
-3. 引入 wxyz-test-1-0
-    ```
-    import { Button, ButtonGroup, Icon } from "wxyz-test-1-0";
-    import 'wxyz-test-1-0/dist/index.css'
-
-    export default {
-        name: "app",
-        components: {
-            "g-button": Button,
-            "g-icon": Icon
-        }
-    }
-    ```
-
-
-## 文档
-
-## 提问
-
-## 变更记录
-
-## 联系方式
-
-## 贡献代码

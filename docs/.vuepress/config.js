@@ -11,6 +11,8 @@ module.exports = {
         sidebar: [
             {
                 title: '入门',
+                collapsable:false,
+                // 加上这一句就表示默认展开子选项
                 children:[
                     '/install/',
                     '/get-started/',
@@ -18,6 +20,7 @@ module.exports = {
             },
             {
                 title: '组件',
+                collapsable:false,
                 children:[
                     '/components/button',
                     '/components/input',
