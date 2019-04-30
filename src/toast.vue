@@ -1,8 +1,8 @@
 <template>
-<div class="wrapper" :class="toastClasses">
+<div class="gulu-toast" :class="toastClasses">
   <div class="toast" ref="toast">
     <div class="message">
-        <slot v-if="!enableHTML"></slot>
+        <slot v-if="!enableHtml"></slot>
         <div v-else v-html="$slots.default[0]"></div>
     </div>
     <div class="line" ref="line"></div>
@@ -16,7 +16,7 @@ export default {
   props: {
     autoClose: {
       type: [Boolean,Number],
-      default: 5,
+      default: 50,
       validator(value){
         return value === false || typeof value === 'number'
       }
@@ -31,7 +31,7 @@ export default {
         };
       }
     },
-    enableHTML: {
+    enableHtml: {
       type: Boolean,
       default: false
     },
@@ -103,8 +103,8 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   0%{opacity: 0;}
   100%{opacity: 1;}
 };
-$transform-time: 0.3s;
-.wrapper{
+.gulu-toast{
+  $transform-time: 0.3s;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -147,6 +147,7 @@ $transform-time: 0.3s;
   .close {
     padding-left: 16px;
     flex-shrink: 0;
+    cursor:pointer;
   }
   .line {
     height: 100%;
